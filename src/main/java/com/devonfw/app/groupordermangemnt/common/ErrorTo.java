@@ -1,4 +1,4 @@
-package com.devonfw.app.ordermangemnt.common;
+package com.devonfw.app.groupordermangemnt.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.lang.reflect.Type;

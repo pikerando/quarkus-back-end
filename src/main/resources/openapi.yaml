@@ -3,12 +3,12 @@ info:
   version: 1.0.0
   title: Pikerando API
 paths:
-  /orders:
+  /groupOrders:
     get:
-      summary: List all orders
-      operationId: listOrders
+      summary: List all GroupOrders
+      operationId: listGroupOrders
       tags:
-        - orders
+        - groupOrders
       parameters:
         - name: limit
           in: query
@@ -19,7 +19,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: A paged array of orders
+          description: A paged array of GroupOrders
           headers:
             x-next:
               description: A link to the next page of responses
@@ -30,7 +30,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/OrderTo"
+                  $ref: "#/components/schemas/GroupOrderTo"
         default:
           description: unexpected error
           content:
@@ -38,19 +38,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
     post:
-      summary: Create an order
-      operationId: createOrder
+      summary: Create an groupOrder
+      operationId: createGroupOrder
       tags:
-        - orders
-      requestBody: 
-        description: the order properties 
+        - groupOrders
+      requestBody:
+        description: the groupOrder properties
         content:
           application/json:
-            schema: 
-              type: object
-              properties:
-                name:
-                  type: string
+            schema:
+              $ref: "#/components/schemas/GroupOrderTo"
+
       responses:
         '201':
           description: Null response
@@ -60,17 +58,17 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
-  /orders/{orderId}:
+  /groupOrders/{groupOrderId}:
     get:
-      summary: Info for a specific order
-      operationId: showOrderById
+      summary: Info for a specific groupOrder
+      operationId: showGroupOrderById
       tags:
-        - orders
+        - groupOrders
       parameters:
-        - name: orderId
+        - name: groupOrderId
           in: path
           required: true
-          description: The id of the order to retrieve
+          description: The id of the groupOrder to retrieve
           schema:
             type: string
       responses:
@@ -80,7 +78,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: 
+                items:
                   $ref: "#/components/schemas/ItemTo"
         default:
           description: unexpected error
@@ -88,31 +86,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
-    
-                
-  /orders/{orderId}/itmes:
+
+
+  /groupOrders/{groupOrderId}/itmes:
     post:
         summary: Create an item
-        operationId: createIteam
+        operationId: createItem
         tags:
-          - orders
+          - groupOrders
         parameters:
-          - name: orderId
+          - name: groupOrderId
             in: path
             required: true
-            description: The id of the order to retrieve
+            description: The id of the GroupOrder to retrieve
             schema:
               type: string
-        requestBody: 
-          description: the item properites 
+        requestBody:
+          description: the item properites
           content:
             application/json:
-              schema: 
-                type: object
-                properties:
-                  name:
-                    type: string
-    
+              schema:
+                $ref: "#/components/schemas/ItemTo"
+
         responses:
           '201':
             description: Null response
@@ -124,7 +119,7 @@ paths:
                   $ref: "#/components/schemas/ErrorTo"
 components:
   schemas:
-    OrderTo:
+    GroupOrderTo:
       type: object
       required:
         - id
