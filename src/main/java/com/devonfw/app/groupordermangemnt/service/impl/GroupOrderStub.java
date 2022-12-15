@@ -3,11 +3,16 @@ package com.devonfw.app.groupordermangemnt.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import com.devonfw.app.groupordermangemnt.common.GroupOrderTo;
 import com.devonfw.app.groupordermangemnt.common.ItemTo;
+import com.devonfw.app.groupordermangemnt.dataaccess.repo.impl.GroupOrderRepositoryImpl;
 import com.devonfw.app.groupordermangemnt.service.api.GroupOrdersApi;
 
 public class GroupOrderStub implements GroupOrdersApi {
+  @Inject
+  GroupOrderRepositoryImpl repo;
 
   @Override
   public void createGroupOrder(GroupOrderTo groupOrderTo) {

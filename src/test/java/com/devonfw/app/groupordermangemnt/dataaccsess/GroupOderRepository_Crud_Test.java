@@ -2,16 +2,16 @@ package com.devonfw.app.groupordermangemnt.dataaccsess;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
 import com.devonfw.app.groupordermangemnt.dataaccess.GroupOrder;
-import com.devonfw.app.groupordermangemnt.dataaccess.repo.api.GroupOrderRepository;
+import com.devonfw.app.groupordermangemnt.dataaccess.repo.impl.GroupOrderRepositoryImpl;
 
 import io.quarkus.test.junit.QuarkusTest;
 
@@ -19,7 +19,7 @@ import io.quarkus.test.junit.QuarkusTest;
 public class GroupOderRepository_Crud_Test {
 
   @Inject
-  GroupOrderRepository groupOrderRepo;
+  GroupOrderRepositoryImpl groupOrderRepo;
 
   @Test
   void testInjected() {
@@ -34,7 +34,7 @@ public class GroupOderRepository_Crud_Test {
   void findAllgroupOrder() {
 
     List<GroupOrder> orders;
-    orders = (List<GroupOrder>) this.groupOrderRepo.findAll();
+    orders = this.groupOrderRepo.findAll().list();
     assertNotNull(orders);
     assertEquals(orders.size(), 3);
   }
@@ -42,12 +42,12 @@ public class GroupOderRepository_Crud_Test {
   @Test
   void findBygroupOrderID() {
 
-    Optional<GroupOrder> order;
+    GroupOrder order;
     order = this.groupOrderRepo.findById(1L);
     assertNotNull(order);
-    Optional<GroupOrder> order2;
+    GroupOrder order2;
     order2 = this.groupOrderRepo.findById(1000L);
-    assertEquals(order2, Optional.empty());
+    assertNull(order2);
     ;
   }
 }
