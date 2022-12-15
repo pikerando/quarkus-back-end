@@ -1,4 +1,4 @@
-package com.devonfw.app.groupordermangemnt.dataccess;
+package com.devonfw.app.groupordermangemnt.dataaccess;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
