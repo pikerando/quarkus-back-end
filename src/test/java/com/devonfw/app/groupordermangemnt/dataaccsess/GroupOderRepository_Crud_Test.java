@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import com.devonfw.app.groupordermangemnt.dataaccess.GroupOrder;
 import com.devonfw.app.groupordermangemnt.dataaccess.repo.impl.GroupOrderRepositoryImpl;
 
+import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
@@ -48,6 +49,22 @@ public class GroupOderRepository_Crud_Test {
     GroupOrder order2;
     order2 = this.groupOrderRepo.findById(1000L);
     assertNull(order2);
-    ;
+
+  }
+
+  @Test
+  void creatGroupOrder() {
+
+    GroupOrder order = new GroupOrder();
+    creatOrder(order);
+    assertNotNull(order.getId());
+
+  }
+
+  @TestTransaction
+  void creatOrder(GroupOrder order) {
+
+    this.groupOrderRepo.persist(order);
+
   }
 }

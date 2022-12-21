@@ -7,12 +7,12 @@ import javax.inject.Inject;
 
 import com.devonfw.app.groupordermangemnt.common.GroupOrderTo;
 import com.devonfw.app.groupordermangemnt.common.ItemTo;
-import com.devonfw.app.groupordermangemnt.dataaccess.repo.impl.GroupOrderRepositoryImpl;
+import com.devonfw.app.groupordermangemnt.logic.api.GroupOrderMangment;
 import com.devonfw.app.groupordermangemnt.service.api.GroupOrdersApi;
 
 public class GroupOrderStub implements GroupOrdersApi {
   @Inject
-  GroupOrderRepositoryImpl repo;
+  GroupOrderMangment groupOrder;
 
   @Override
   public void createGroupOrder(GroupOrderTo groupOrderTo) {
@@ -31,16 +31,17 @@ public class GroupOrderStub implements GroupOrdersApi {
   @Override
   public List<GroupOrderTo> listGroupOrders(Integer limit) {
 
-    List<GroupOrderTo> orders = new ArrayList<>();
-    GroupOrderTo order1 = new GroupOrderTo();
-    order1.setName("order1");
-    order1.setId(1L);
-    GroupOrderTo order2 = new GroupOrderTo();
-    order2.setName("order2");
-    order2.setId(2L);
-    orders.add(order1);
-    orders.add(order2);
-    return orders;
+    return this.groupOrder.listGroupOrders(limit);
+    // List<GroupOrderTo> orders = new ArrayList<>();
+    // GroupOrderTo order1 = new GroupOrderTo();
+    // order1.setName("order1");
+    // order1.setId(1L);
+    // GroupOrderTo order2 = new GroupOrderTo();
+    // order2.setName("order2");
+    // order2.setId(2L);
+    // orders.add(order1);
+    // orders.add(order2);
+    // return orders;
   }
 
   @Override
