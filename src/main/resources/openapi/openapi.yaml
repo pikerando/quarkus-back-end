@@ -70,7 +70,7 @@ paths:
           required: true
           description: The id of the groupOrder to retrieve
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: Expected response to a valid request
@@ -88,7 +88,7 @@ paths:
                 $ref: "#/components/schemas/ErrorTo"
 
 
-  /groupOrders/{groupOrderId}/itmes:
+  /groupOrders/{groupOrderId}/items:
     post:
         summary: Create an item
         operationId: createItem
@@ -100,7 +100,7 @@ paths:
             required: true
             description: The id of the GroupOrder to retrieve
             schema:
-              type: string
+              type: integer
         requestBody:
           description: the item properites
           content:

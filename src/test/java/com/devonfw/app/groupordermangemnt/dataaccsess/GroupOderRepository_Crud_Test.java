@@ -44,10 +44,10 @@ public class GroupOderRepository_Crud_Test {
   void findBygroupOrderID() {
 
     GroupOrder order;
-    order = this.groupOrderRepo.findById(1L);
+    order = this.groupOrderRepo.findById(123456L);
     assertNotNull(order);
     GroupOrder order2;
-    order2 = this.groupOrderRepo.findById(1000L);
+    order2 = this.groupOrderRepo.findById(12343132L);
     assertNull(order2);
 
   }
@@ -56,6 +56,8 @@ public class GroupOderRepository_Crud_Test {
   void creatGroupOrder() {
 
     GroupOrder order = new GroupOrder();
+    order.setGroupOrderId(10L);
+    order.setName("order10");
     creatOrder(order);
     assertNotNull(order.getId());
 

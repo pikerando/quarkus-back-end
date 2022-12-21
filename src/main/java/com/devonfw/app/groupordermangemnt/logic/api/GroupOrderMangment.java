@@ -2,7 +2,7 @@ package com.devonfw.app.groupordermangemnt.logic.api;
 
 import java.util.List;
 
-import com.devonfw.app.groupordermangemnt.common.GroupOrderTo;
+import com.devonfw.app.groupordermangemnt.common.model.GroupOrderTo;
 
 /**
  *

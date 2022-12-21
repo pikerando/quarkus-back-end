@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import com.devonfw.app.groupordermangemnt.common.GroupOrderTo;
+import com.devonfw.app.groupordermangemnt.common.model.GroupOrderTo;
 import com.devonfw.app.groupordermangemnt.dataaccess.repo.impl.GroupOrderRepositoryImpl;
 import com.devonfw.app.groupordermangemnt.logic.api.GroupOrderMangment;
 import com.devonfw.app.groupordermangemnt.logic.api.GroupOrderMapper;
@@ -29,8 +29,8 @@ public class GroupOrderMangmentImpl implements GroupOrderMangment {
     return this.groupOrderMapper.toToList(this.groupOrderRepo.findAll().list());
   }
 
-  @Override
   @Transactional
+  @Override
   public void createGroupOrder(GroupOrderTo groupOrderTo) {
 
     this.groupOrderRepo.persist(this.groupOrderMapper.toEntity(groupOrderTo));

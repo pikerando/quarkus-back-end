@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
-import com.devonfw.app.groupordermangemnt.common.GroupOrderTo;
-import com.devonfw.app.groupordermangemnt.common.ItemTo;
+import com.devonfw.app.groupordermangemnt.common.model.GroupOrderTo;
+import com.devonfw.app.groupordermangemnt.common.model.ItemTo;
 import com.devonfw.app.groupordermangemnt.logic.api.GroupOrderMangment;
 import com.devonfw.app.groupordermangemnt.service.api.GroupOrdersApi;
 
@@ -15,16 +16,14 @@ public class GroupOrderStub implements GroupOrdersApi {
   GroupOrderMangment groupOrder;
 
   @Override
+  @Transactional
   public void createGroupOrder(GroupOrderTo groupOrderTo) {
 
-    // TODO Auto-generated method stub
-
+    this.groupOrder.createGroupOrder(groupOrderTo);
   }
 
   @Override
   public void createItem(String groupOrderId, ItemTo itemTo) {
-
-    // TODO Auto-generated method stub
 
   }
 

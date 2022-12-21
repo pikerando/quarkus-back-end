@@ -13,8 +13,8 @@ import javax.ws.rs.QueryParam;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-import com.devonfw.app.groupordermangemnt.common.GroupOrderTo;
-import com.devonfw.app.groupordermangemnt.common.ItemTo;
+import com.devonfw.app.groupordermangemnt.common.model.GroupOrderTo;
+import com.devonfw.app.groupordermangemnt.common.model.ItemTo;
 
 import io.quarkiverse.openapi.generator.annotations.GeneratedClass;
 import io.quarkiverse.openapi.generator.annotations.GeneratedMethod;
@@ -46,7 +46,7 @@ public interface GroupOrdersApi {
    *
    */
   @POST
-  @Path("/{groupOrderId}/itmes")
+  @Path("/{groupOrderId}/items")
   @Consumes({ "application/json" })
   @Produces({ "application/json" })
   @GeneratedMethod("createItem")

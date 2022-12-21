@@ -2,25 +2,31 @@ package com.devonfw.app.groupordermangemnt.dataaccess;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import com.devonfw.app.general.dataaccess.ApplicationPersistenceEntity;
 
 @Entity
-public class GroupOrder {
+public class GroupOrder extends ApplicationPersistenceEntity {
 
-  @Id
   @GeneratedValue
-  private Long id;
+  private Long GroupOrderId;
 
   private String name;
 
-  public Long getId() {
+  /**
+   * @return groupOrderId
+   */
+  public Long getGroupOrderId() {
 
-    return this.id;
+    return this.GroupOrderId;
   }
 
-  public void setId(Long id) {
+  /**
+   * @param groupOrderId new value of {@link #getgroupOrderId}.
+   */
+  public void setGroupOrderId(Long groupOrderId) {
 
-    this.id = id;
+    this.GroupOrderId = groupOrderId;
   }
 
   public String getName() {

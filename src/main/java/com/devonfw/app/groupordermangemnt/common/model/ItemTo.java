@@ -1,4 +1,4 @@
-package com.devonfw.app.groupordermangemnt.common;
+package com.devonfw.app.groupordermangemnt.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.lang.reflect.Type;
@@ -6,7 +6,7 @@ import java.lang.reflect.Type;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GroupOrderTo  {
+public class ItemTo  {
 
     private Long id;
     private String name;
@@ -27,7 +27,7 @@ public class GroupOrderTo  {
         this.id = id;
     }
 
-    public GroupOrderTo id(Long id) {
+    public ItemTo id(Long id) {
         this.id = id;
         return this;
     }
@@ -48,7 +48,7 @@ public class GroupOrderTo  {
         this.name = name;
     }
 
-    public GroupOrderTo name(String name) {
+    public ItemTo name(String name) {
         this.name = name;
         return this;
     }
@@ -59,7 +59,7 @@ public class GroupOrderTo  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class GroupOrderTo {\n");
+        sb.append("class ItemTo {\n");
 
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
