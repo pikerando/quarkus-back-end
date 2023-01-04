@@ -5,10 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import de.pikerando.backend.general.sevice.api.GroupOrdersApi;
+import de.pikerando.backend.general.sevice.model.GroupOrderTo;
+import de.pikerando.backend.general.sevice.model.ItemTo;
 import de.pikerando.backend.grouporder.logic.api.GroupOrderMangment;
-import de.pikerando.backend.grouporder.sevice.api.GroupOrdersApi;
-import de.pikerando.backend.grouporder.sevice.model.GroupOrderTo;
-import de.pikerando.backend.grouporder.sevice.model.ItemTo;
 import de.pikerando.backend.item.service.impl.ItemGroupOrderServiceImpl;
 
 public class GroupOrderStub implements GroupOrdersApi {
@@ -61,6 +61,13 @@ public class GroupOrderStub implements GroupOrdersApi {
     // item2.setId(2L);
     // items.add(item1);
     // items.add(item2);
+
+  }
+
+  @Override
+  public void deleteItem(Long itemId) {
+
+    // TODO Auto-generated method stub
 
   }
 

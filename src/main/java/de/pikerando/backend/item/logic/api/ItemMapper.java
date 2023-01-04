@@ -5,7 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import de.pikerando.backend.grouporder.sevice.model.ItemTo;
+import de.pikerando.backend.general.sevice.model.ItemTo;
 import de.pikerando.backend.item.dataaccess.Item;
 
 /**

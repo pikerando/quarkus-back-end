@@ -5,8 +5,8 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import de.pikerando.backend.general.sevice.model.GroupOrderTo;
 import de.pikerando.backend.grouporder.dataaccess.GroupOrder;
-import de.pikerando.backend.grouporder.sevice.model.GroupOrderTo;
 
 /**
  * TODO ykharita This type ...

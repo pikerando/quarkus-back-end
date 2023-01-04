@@ -2,7 +2,7 @@ package de.pikerando.backend.grouporder.logic.api;
 
 import java.util.List;
 
-import de.pikerando.backend.grouporder.sevice.model.GroupOrderTo;
+import de.pikerando.backend.general.sevice.model.GroupOrderTo;
 
 /**
  *

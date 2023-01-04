@@ -5,7 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import de.pikerando.backend.grouporder.sevice.model.ItemTo;
+import de.pikerando.backend.general.sevice.model.ItemTo;
 import de.pikerando.backend.item.logic.api.ItemMangment;
 import de.pikerando.backend.item.service.api.ItemGroupOrderService;
 
@@ -30,6 +30,11 @@ public class ItemGroupOrderServiceImpl implements ItemGroupOrderService {
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId) {
 
     return this.itemMangemnt.listItemsOfGroupOrder(groupOrderId);
+  }
+
+  @Override
+  public void deleteItem(Long itemId) {
+
   }
 
 }

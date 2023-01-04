@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.0
+  version: 1.0.1
   title: Pikerando API
 paths:
   /groupOrders:
@@ -119,6 +119,90 @@ paths:
               application/json:
                 schema:
                   $ref: "#/components/schemas/ErrorTo"
+  /groupOrders/items/{itemId}:
+    delete:
+      summary: Deletes a single item based on the ID supplied
+      operationId: deleteItem
+      tags:
+        - groupOrders
+      parameters:
+        - name: itemId
+          in: path
+          description: The id of the item to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Item deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTo'
+  /restaurants:
+    get:
+      summary: List all restaurants
+      operationId: listRestaurants
+      tags:
+        - restaurants
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of orders
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RestaurantTo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorTo"
+                
+  /restaurants/{restaurantId}:
+    get:
+      summary: Info for a specific restaurant
+      operationId: showRestaurantById
+      tags:
+        - restaurants
+      parameters:
+        - name: restaurantId
+          in: path
+          required: true
+          description: The id of the restaurant to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestaurantTo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorTo"
 components:
   schemas:
     GroupOrderTo:
@@ -132,6 +216,19 @@ components:
           format: int64
         name:
           type: string
+        restaurantId:
+          type: integer
+          format: int64
+        creator:
+          type: string
+        status:
+          type: string
+          enum:
+            - open
+            - closed
+        totalprice: 
+          type : number 
+          format : float
     ItemTo:
       type: object
       required:
@@ -143,6 +240,39 @@ components:
           format: int64
         name:
           type: string
+        dish:
+          $ref: "#/components/schemas/DishTo"
+    RestaurantTo:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        menu:
+          type: array
+          items:
+            $ref: "#/components/schemas/DishTo"
+
+    DishTo:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price: 
+          type : number
+          format : float
+
     ErrorTo:
       type: object
       required:

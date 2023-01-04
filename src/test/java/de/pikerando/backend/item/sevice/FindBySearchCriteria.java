@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
-import de.pikerando.backend.grouporder.sevice.model.ItemTo;
+import de.pikerando.backend.general.sevice.model.ItemTo;
 import de.pikerando.backend.item.service.api.ItemGroupOrderService;
 
 import io.quarkus.test.junit.QuarkusTest;

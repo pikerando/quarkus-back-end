@@ -20,4 +20,10 @@ public class ItemRepositoryImpl implements ItemRepository {
     return list("groupOrderId", grouporderid);
   }
 
+  @Override
+  public void deleteItem(Long itemId) {
+
+    delete("itemId", itemId);
+  }
+
 }

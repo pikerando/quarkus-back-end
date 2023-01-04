@@ -6,10 +6,10 @@ import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
+import de.pikerando.backend.general.sevice.model.GroupOrderTo;
 import de.pikerando.backend.grouporder.dataaccess.GroupOrder;
 import de.pikerando.backend.grouporder.logic.api.GroupOrderMapper;
 import de.pikerando.backend.grouporder.logic.imp.GroupOrderMangmentImpl;
-import de.pikerando.backend.grouporder.sevice.model.GroupOrderTo;
 
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;

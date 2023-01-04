@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import de.pikerando.backend.grouporder.sevice.model.ItemTo;
+import de.pikerando.backend.general.sevice.model.ItemTo;
 import de.pikerando.backend.item.dataaccess.repo.api.ItemRepository;
 import de.pikerando.backend.item.logic.api.ItemMangment;
 import de.pikerando.backend.item.logic.api.ItemMapper;
@@ -39,6 +39,11 @@ public class ItemMangmentImpl implements ItemMangment {
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId) {
 
     return this.itemMapper.toToList(this.itemRepo.findeByGroupOrderId(groupOrderId));
+  }
+
+  @Override
+  public void deleteItem(Long itemId) {
+
   }
 
 }
