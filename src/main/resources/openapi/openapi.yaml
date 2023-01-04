@@ -71,6 +71,7 @@ paths:
           description: The id of the groupOrder to retrieve
           schema:
             type: integer
+            format: int64
       responses:
         '200':
           description: Expected response to a valid request
@@ -101,6 +102,7 @@ paths:
             description: The id of the GroupOrder to retrieve
             schema:
               type: integer
+              format: int64
         requestBody:
           description: the item properites
           content:
