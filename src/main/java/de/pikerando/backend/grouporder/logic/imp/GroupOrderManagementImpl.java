@@ -12,7 +12,7 @@ import de.pikerando.backend.grouporder.logic.api.GroupOrderManagement;
 import de.pikerando.backend.grouporder.logic.api.GroupOrderMapper;
 
 /**
- * @author ykharita this class will contain the logic for the groupordermangment. it will convert the entity to to and
+ * @author ykharita this class will contain the logic for the groupordermanagement. it will convert the entity to to and
  *         otherwise
  */
 @ApplicationScoped

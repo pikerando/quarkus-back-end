@@ -9,5 +9,9 @@ import de.pikerando.backend.general.sevice.model.DishTo;
  *
  */
 public interface DishManagement {
+  /**
+   * @param restaurantId
+   * @return
+   */
   List<DishTo> ListDishesForRestaurant(Long restaurantId);
 }

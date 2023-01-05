@@ -21,9 +21,14 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
 
   @Override
   @Transactional
-  public void createGroupOrder(GroupOrderTo groupOrderTo) {
+  public void createGroupOrder(GroupOrderTo groupOrderTo) throws PersistenceException {
 
-    this.groupOrder.createGroupOrder(groupOrderTo);
+    try {
+      this.groupOrder.createGroupOrder(groupOrderTo);
+    } catch (PersistenceException e) {
+      throw new PersistenceException("Duplicate value detected: " + groupOrderTo.getId());
+    }
+
   }
 
   @Override
@@ -53,6 +58,7 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
   }
 
   @Override
+  @Transactional
   public void deleteItem(Long itemId) {
 
     this.itemsevice.deleteItem(itemId);

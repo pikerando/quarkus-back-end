@@ -2,6 +2,7 @@ package de.pikerando.backend.item.dataaccess;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 
 import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 
@@ -13,6 +14,7 @@ import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 @Entity
 public class Item extends ApplicationPersistenceEntity {
 
+  @GeneratedValue
   @Column(unique = true)
   private Long itemId;
 

@@ -16,12 +16,12 @@ import de.pikerando.backend.general.sevice.model.DishTo;
 @ApplicationScoped
 public class DishServiceImpl implements DishService {
   @Inject
-  private DishManagement dishmangment;
+  private DishManagement dishmanagement;
 
   @Override
   public List<DishTo> listDishesForRestaurant(Long RestaurantId) {
 
-    return this.dishmangment.ListDishesForRestaurant(RestaurantId);
+    return this.dishmanagement.ListDishesForRestaurant(RestaurantId);
   }
 
 }

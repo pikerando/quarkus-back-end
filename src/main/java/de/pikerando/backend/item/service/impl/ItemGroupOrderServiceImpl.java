@@ -17,24 +17,25 @@ import de.pikerando.backend.item.service.api.ItemGroupOrderService;
 public class ItemGroupOrderServiceImpl implements ItemGroupOrderService {
 
   @Inject
-  ItemManagement itemMangemnt;
+  ItemManagement itemManagement;
 
   @Override
   public void createItem(Long groupOrderId, ItemTo itemTo) {
 
-    this.itemMangemnt.createItem(groupOrderId, itemTo);
+    this.itemManagement.createItem(groupOrderId, itemTo);
 
   }
 
   @Override
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId) {
 
-    return this.itemMangemnt.listItemsOfGroupOrder(groupOrderId);
+    return this.itemManagement.listItemsOfGroupOrder(groupOrderId);
   }
 
   @Override
   public void deleteItem(Long itemId) {
 
+    this.itemManagement.deleteItem(itemId);
   }
 
 }

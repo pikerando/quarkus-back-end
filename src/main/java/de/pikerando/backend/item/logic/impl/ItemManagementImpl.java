@@ -16,7 +16,7 @@ import de.pikerando.backend.item.logic.api.ItemMapper;
  *
  */
 @ApplicationScoped
-public class ItemMangmentImpl implements ItemManagement {
+public class ItemManagementImpl implements ItemManagement {
 
   @Inject
   private ItemRepository itemRepo;
