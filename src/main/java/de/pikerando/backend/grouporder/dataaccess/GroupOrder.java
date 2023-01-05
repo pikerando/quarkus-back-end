@@ -1,5 +1,6 @@
 package de.pikerando.backend.grouporder.dataaccess;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -9,6 +10,7 @@ import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 public class GroupOrder extends ApplicationPersistenceEntity {
 
   @GeneratedValue
+  @Column(unique = true)
   private Long groupOrderId;
 
   private String name;

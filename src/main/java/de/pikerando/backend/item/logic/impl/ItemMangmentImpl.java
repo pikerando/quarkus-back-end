@@ -19,10 +19,10 @@ import de.pikerando.backend.item.logic.api.ItemMapper;
 public class ItemMangmentImpl implements ItemMangment {
 
   @Inject
-  ItemRepository itemRepo;
+  private ItemRepository itemRepo;
 
   @Inject
-  ItemMapper itemMapper;
+  private ItemMapper itemMapper;
 
   @Transactional
   @Override
@@ -43,6 +43,8 @@ public class ItemMangmentImpl implements ItemMangment {
 
   @Override
   public void deleteItem(Long itemId) {
+
+    this.itemRepo.deleteItem(itemId);
 
   }
 
