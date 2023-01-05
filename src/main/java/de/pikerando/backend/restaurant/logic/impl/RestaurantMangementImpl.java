@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import de.pikerando.backend.general.sevice.model.RestaurantTo;
 import de.pikerando.backend.restaurant.dataaccess.repo.api.RestaurantRepository;
-import de.pikerando.backend.restaurant.logic.api.RestaurantMangment;
+import de.pikerando.backend.restaurant.logic.api.RestaurantManagement;
 import de.pikerando.backend.restaurant.logic.api.RestaurantMapper;
 
 /**
@@ -15,7 +15,7 @@ import de.pikerando.backend.restaurant.logic.api.RestaurantMapper;
  *
  */
 @ApplicationScoped
-public class RestaurantMangemntImpl implements RestaurantMangment {
+public class RestaurantMangementImpl implements RestaurantManagement {
 
   @Inject
   private RestaurantRepository restaurantRepo;

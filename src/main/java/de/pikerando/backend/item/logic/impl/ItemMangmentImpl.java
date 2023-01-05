@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 import de.pikerando.backend.general.sevice.model.ItemTo;
 import de.pikerando.backend.item.dataaccess.repo.api.ItemRepository;
-import de.pikerando.backend.item.logic.api.ItemMangment;
+import de.pikerando.backend.item.logic.api.ItemManagement;
 import de.pikerando.backend.item.logic.api.ItemMapper;
 
 /**
@@ -16,7 +16,7 @@ import de.pikerando.backend.item.logic.api.ItemMapper;
  *
  */
 @ApplicationScoped
-public class ItemMangmentImpl implements ItemMangment {
+public class ItemMangmentImpl implements ItemManagement {
 
   @Inject
   private ItemRepository itemRepo;

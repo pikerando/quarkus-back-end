@@ -8,7 +8,7 @@ import de.pikerando.backend.general.sevice.model.RestaurantTo;
  * TODO ykharita This type ...
  *
  */
-public interface RestaurantMangment {
+public interface RestaurantManagement {
   List<RestaurantTo> listRestaurants(Integer limit);
 
   RestaurantTo getRestaurantById(Long restaurantId);

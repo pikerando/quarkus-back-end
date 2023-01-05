@@ -9,7 +9,7 @@ import de.pikerando.backend.general.sevice.model.GroupOrderTo;
  *
  */
 
-public interface GroupOrderMangment {
+public interface GroupOrderManagement {
   public List<GroupOrderTo> listGroupOrders(Integer limit);
 
   public void createGroupOrder(GroupOrderTo groupOrderTo);

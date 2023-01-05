@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import de.pikerando.backend.general.sevice.model.ItemTo;
-import de.pikerando.backend.item.logic.api.ItemMangment;
+import de.pikerando.backend.item.logic.api.ItemManagement;
 import de.pikerando.backend.item.service.api.ItemGroupOrderService;
 
 /**
@@ -17,7 +17,7 @@ import de.pikerando.backend.item.service.api.ItemGroupOrderService;
 public class ItemGroupOrderServiceImpl implements ItemGroupOrderService {
 
   @Inject
-  ItemMangment itemMangemnt;
+  ItemManagement itemMangemnt;
 
   @Override
   public void createItem(Long groupOrderId, ItemTo itemTo) {

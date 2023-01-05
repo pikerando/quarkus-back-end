@@ -3,17 +3,18 @@ package de.pikerando.backend.grouporder.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
 
 import de.pikerando.backend.general.sevice.api.GroupOrdersApi;
 import de.pikerando.backend.general.sevice.model.GroupOrderTo;
 import de.pikerando.backend.general.sevice.model.ItemTo;
-import de.pikerando.backend.grouporder.logic.api.GroupOrderMangment;
+import de.pikerando.backend.grouporder.logic.api.GroupOrderManagement;
 import de.pikerando.backend.item.service.impl.ItemGroupOrderServiceImpl;
 
 public class GroupOrderServiceImpl implements GroupOrdersApi {
   @Inject
-  private GroupOrderMangment groupOrder;
+  private GroupOrderManagement groupOrder;
 
   @Inject
   private ItemGroupOrderServiceImpl itemsevice;
@@ -33,9 +34,14 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
   }
 
   @Override
-  public void createItem(Long groupOrderId, ItemTo itemTo) {
+  public void createItem(Long groupOrderId, ItemTo itemTo) throws PersistenceException {
 
-    this.itemsevice.createItem(groupOrderId, itemTo);
+    try {
+
+      this.itemsevice.createItem(groupOrderId, itemTo);
+    } catch (PersistenceException e) {
+      throw new PersistenceException("Duplicate value detected: " + itemTo.getId());
+    }
 
   }
 

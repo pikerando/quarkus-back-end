@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 import de.pikerando.backend.general.sevice.model.GroupOrderTo;
 import de.pikerando.backend.grouporder.dataaccess.repo.impl.GroupOrderRepositoryImpl;
-import de.pikerando.backend.grouporder.logic.api.GroupOrderMangment;
+import de.pikerando.backend.grouporder.logic.api.GroupOrderManagement;
 import de.pikerando.backend.grouporder.logic.api.GroupOrderMapper;
 
 /**
@@ -16,7 +16,7 @@ import de.pikerando.backend.grouporder.logic.api.GroupOrderMapper;
  *         otherwise
  */
 @ApplicationScoped
-public class GroupOrderMangmentImpl implements GroupOrderMangment {
+public class GroupOrderManagementImpl implements GroupOrderManagement {
   @Inject
   GroupOrderRepositoryImpl groupOrderRepo;
 
