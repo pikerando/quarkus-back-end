@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import de.pikerando.backend.dish.service.api.DishService;
+import de.pikerando.backend.dish.service.api.DishToRestaurantService;
 import de.pikerando.backend.general.sevice.api.RestaurantsApi;
 import de.pikerando.backend.general.sevice.model.RestaurantTo;
 import de.pikerando.backend.restaurant.logic.api.RestaurantManagement;
@@ -19,7 +19,7 @@ public class RestaurantServiceImpl implements RestaurantsApi {
   private RestaurantManagement restaurantmangemnt;
 
   @Inject
-  private DishService dishservice;
+  private DishToRestaurantService dishservice;
 
   @Override
   public List<RestaurantTo> listRestaurants(Integer limit) {

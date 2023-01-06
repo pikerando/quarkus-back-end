@@ -18,6 +18,8 @@ public class Item extends ApplicationPersistenceEntity {
   @Column(unique = true)
   private Long itemId;
 
+  private Long dishId;
+
   private Long groupOrderId;
 
   private String name;
@@ -59,5 +61,21 @@ public class Item extends ApplicationPersistenceEntity {
   public void setName(String name) {
 
     this.name = name;
+  }
+
+  /**
+   * @return dishId
+   */
+  public Long getDishId() {
+
+    return this.dishId;
+  }
+
+  /**
+   * @param dishId new value of {@link #getdishId}.
+   */
+  public void setDishId(Long dishId) {
+
+    this.dishId = dishId;
   }
 }

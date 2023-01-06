@@ -20,22 +20,9 @@ public class ItemGroupOrderServiceImpl implements ItemGroupOrderService {
   ItemManagement itemManagement;
 
   @Override
-  public void createItem(Long groupOrderId, ItemTo itemTo) {
-
-    this.itemManagement.createItem(groupOrderId, itemTo);
-
-  }
-
-  @Override
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId) {
 
     return this.itemManagement.listItemsOfGroupOrder(groupOrderId);
-  }
-
-  @Override
-  public void deleteItem(Long itemId) {
-
-    this.itemManagement.deleteItem(itemId);
   }
 
 }

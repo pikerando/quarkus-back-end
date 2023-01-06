@@ -18,10 +18,10 @@ public interface ItemMapper {
   @Mapping(target = "name", source = "name")
   ItemTo toTO(Item item);
 
-  @Mapping(target = "itemId", source = "itemto.id")
-  @Mapping(target = "name", source = "itemto.name")
-  @Mapping(target = "groupOrderId", source = "groupOrderId")
-  Item toEntity(Long groupOrderId, ItemTo itemto);
+  @Mapping(target = "itemId", source = "itemTo.id")
+  @Mapping(target = "name", source = "itemTo.name")
+  @Mapping(target = "groupOrderId", source = "itemTo.groupOrderId")
+  Item toEntity(ItemTo itemTo);
 
   List<ItemTo> toToList(List<Item> list);
 

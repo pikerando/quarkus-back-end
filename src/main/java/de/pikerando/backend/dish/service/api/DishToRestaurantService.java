@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.pikerando.backend.general.sevice.model.DishTo;
 
-public interface DishService {
+public interface DishToRestaurantService {
 
   List<DishTo> listDishesForRestaurant(Long RestaurantId);
 }

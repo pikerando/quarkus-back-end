@@ -58,6 +58,31 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
+    patch:
+      summary: Update a groupOrder
+      operationId: updateGroupOrder
+      tags:
+        - groupOrders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupOrderTo'
+      responses:
+        200:
+          description:  GroupOrder updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupOrderTo'
+        404:
+          description: GroupOrder not found
+          content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ErrorTo"
+    
   /groupOrders/{groupOrderId}:
     get:
       summary: Info for a specific groupOrder
@@ -88,22 +113,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
 
-
-  /groupOrders/{groupOrderId}/items:
+  /items:
     post:
         summary: Create an item
         operationId: createItem
         tags:
-          - groupOrders
-        parameters:
-          - name: groupOrderId
-            in: path
-            required: true
-            description: The id of the GroupOrder to retrieve
-            schema:
-              type: integer
-              format: int64
+          - items
         requestBody:
+          required: true
           description: the item properites
           content:
             application/json:
@@ -119,12 +136,37 @@ paths:
               application/json:
                 schema:
                   $ref: "#/components/schemas/ErrorTo"
-  /groupOrders/items/{itemId}:
+    patch:
+      summary: Update an item
+      operationId: updateItem
+      tags:
+        - items
+      requestBody:
+          required: true
+          description: the item properites
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemTo"
+      responses:
+        200:
+          description:  GroupOrder updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupOrderTo'
+        404:
+          description: GroupOrder not found
+          content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ErrorTo"
+  /items/{itemId}:
     delete:
       summary: Deletes a single item based on the ID supplied
       operationId: deleteItem
       tags:
-        - groupOrders
+        - items
       parameters:
         - name: itemId
           in: path
@@ -134,7 +176,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '204':
+        '200':
           description: Item deleted
         default:
           description: unexpected error
@@ -142,6 +184,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorTo'
+    
   /restaurants:
     get:
       summary: List all restaurants
@@ -158,7 +201,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: A paged array of orders
+          description: A list of restaurants
           headers:
             x-next:
               description: A link to the next page of responses
@@ -217,6 +260,7 @@ components:
           format: int64
         name:
           type: string
+          
         restaurantId:
           type: integer
           format: int64
@@ -230,6 +274,7 @@ components:
         totalPrice: 
           type : number 
           format : float
+          
     ItemTo:
       type: object
       required:
@@ -241,8 +286,12 @@ components:
           format: int64
         name:
           type: string
+        groupOrderId:
+          type: integer
+          format: int64
         dish:
           $ref: "#/components/schemas/DishTo"
+          
     RestaurantTo:
       type: object
       required:

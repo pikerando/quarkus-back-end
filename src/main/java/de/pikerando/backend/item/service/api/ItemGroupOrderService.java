@@ -11,10 +11,6 @@ import de.pikerando.backend.general.sevice.model.ItemTo;
 
 public interface ItemGroupOrderService {
 
-  public void createItem(Long groupOrderId, ItemTo itemTo);
-
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId);
-
-  public void deleteItem(Long itemId);
 
 }

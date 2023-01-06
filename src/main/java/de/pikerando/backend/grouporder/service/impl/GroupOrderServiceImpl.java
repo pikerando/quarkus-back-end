@@ -1,4 +1,4 @@
-package de.pikerando.backend.grouporder.service;
+package de.pikerando.backend.grouporder.service.impl;
 
 import java.util.List;
 
@@ -39,18 +39,6 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
   }
 
   @Override
-  public void createItem(Long groupOrderId, ItemTo itemTo) throws PersistenceException {
-
-    try {
-
-      this.itemsevice.createItem(groupOrderId, itemTo);
-    } catch (PersistenceException e) {
-      throw new PersistenceException("Duplicate value detected: " + itemTo.getId());
-    }
-
-  }
-
-  @Override
   public List<ItemTo> showGroupOrderById(Long groupOrderId) {
 
     return this.itemsevice.listItemsOfGroupOrder(groupOrderId);
@@ -58,10 +46,10 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
   }
 
   @Override
-  @Transactional
-  public void deleteItem(Long itemId) {
+  public GroupOrderTo updateGroupOrder(GroupOrderTo groupOrderTo) {
 
-    this.itemsevice.deleteItem(itemId);
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

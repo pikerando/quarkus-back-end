@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import de.pikerando.backend.dish.logic.api.DishManagement;
-import de.pikerando.backend.dish.service.api.DishService;
+import de.pikerando.backend.dish.service.api.DishToRestaurantService;
 import de.pikerando.backend.general.sevice.model.DishTo;
 
 /**
@@ -14,7 +14,7 @@ import de.pikerando.backend.general.sevice.model.DishTo;
  *
  */
 @ApplicationScoped
-public class DishServiceImpl implements DishService {
+public class DishToRestaurantServiceImpl implements DishToRestaurantService {
   @Inject
   private DishManagement dishmanagement;
 

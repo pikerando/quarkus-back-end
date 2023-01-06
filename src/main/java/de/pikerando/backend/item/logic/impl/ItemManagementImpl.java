@@ -26,9 +26,9 @@ public class ItemManagementImpl implements ItemManagement {
 
   @Transactional
   @Override
-  public void createItem(Long groupOrderId, ItemTo itemTo) {
+  public void createItem(ItemTo itemTo) {
 
-    this.itemRepo.persist(this.itemMapper.toEntity(groupOrderId, itemTo));
+    this.itemRepo.persist(this.itemMapper.toEntity(itemTo));
 
   }
 
