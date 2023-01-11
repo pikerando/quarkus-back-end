@@ -10,7 +10,11 @@ import de.pikerando.backend.general.sevice.model.GroupOrderTo;
  */
 
 public interface GroupOrderManagement {
-  public List<GroupOrderTo> listGroupOrders(Integer limit);
+  List<GroupOrderTo> listGroupOrders(Integer limit);
 
-  public void createGroupOrder(GroupOrderTo groupOrderTo);
+  void createGroupOrder(GroupOrderTo groupOrderTo);
+
+  void deleteGroupOrder(Long groupOrderId);
+
+  GroupOrderTo updateStatusOfGroupOrder(Long groupOrderId);
 }

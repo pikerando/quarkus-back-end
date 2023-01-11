@@ -15,6 +15,42 @@ public class GroupOrder extends ApplicationPersistenceEntity {
 
   private String name;
 
+  private String creator;
+
+  private Status status;
+
+  /**
+   * @return creator
+   */
+  public String getCreator() {
+
+    return this.creator;
+  }
+
+  /**
+   * @param creator new value of {@link #getcreator}.
+   */
+  public void setCreator(String creator) {
+
+    this.creator = creator;
+  }
+
+  /**
+   * @return status
+   */
+  public Status getStatus() {
+
+    return this.status;
+  }
+
+  /**
+   * @param status new value of {@link #getstatus}.
+   */
+  public void setStatus(Status status) {
+
+    this.status = status;
+  }
+
   /**
    * @return groupOrderId
    */

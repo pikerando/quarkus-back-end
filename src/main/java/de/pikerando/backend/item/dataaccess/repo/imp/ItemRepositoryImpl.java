@@ -26,4 +26,10 @@ public class ItemRepositoryImpl implements ItemRepository {
     delete("itemId", itemId);
   }
 
+  @Override
+  public Item findByItemId(Long itemId) {
+
+    return find("itemId", itemId).firstResult();
+  }
+
 }

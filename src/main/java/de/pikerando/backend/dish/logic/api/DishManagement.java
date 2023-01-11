@@ -14,4 +14,6 @@ public interface DishManagement {
    * @return
    */
   List<DishTo> ListDishesForRestaurant(Long restaurantId);
+
+  DishTo findDishByDishId(Long dishId);
 }

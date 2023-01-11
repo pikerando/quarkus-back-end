@@ -46,10 +46,17 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
   }
 
   @Override
-  public GroupOrderTo updateGroupOrder(GroupOrderTo groupOrderTo) {
+  @Transactional
+  public GroupOrderTo updateStatusOfGroupOrder(Long groupOrderId) {
 
-    // TODO Auto-generated method stub
-    return null;
+    return this.groupOrder.updateStatusOfGroupOrder(groupOrderId);
+  }
+
+  @Override
+  @Transactional
+  public void deleteGroupOrder(Long groupOrderId) {
+
+    this.groupOrder.deleteGroupOrder(groupOrderId);
   }
 
 }

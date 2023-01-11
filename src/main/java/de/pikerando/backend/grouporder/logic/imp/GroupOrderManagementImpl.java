@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import de.pikerando.backend.general.sevice.model.GroupOrderTo;
+import de.pikerando.backend.grouporder.dataaccess.GroupOrder;
+import de.pikerando.backend.grouporder.dataaccess.Status;
 import de.pikerando.backend.grouporder.dataaccess.repo.impl.GroupOrderRepositoryImpl;
 import de.pikerando.backend.grouporder.logic.api.GroupOrderManagement;
 import de.pikerando.backend.grouporder.logic.api.GroupOrderMapper;
@@ -35,6 +37,27 @@ public class GroupOrderManagementImpl implements GroupOrderManagement {
 
     this.groupOrderRepo.persist(this.groupOrderMapper.toEntity(groupOrderTo));
 
+  }
+
+  @Override
+  public void deleteGroupOrder(Long groupOrderId) {
+
+    this.groupOrderRepo.delete("groupOrderId", groupOrderId);
+
+  }
+
+  @Override
+  public GroupOrderTo updateStatusOfGroupOrder(Long groupOrderId) {
+
+    GroupOrder order = this.groupOrderRepo.find("groupOrderId", groupOrderId).firstResult();
+
+    if (order.getStatus() == Status.CLOSED) {
+      order.setStatus(Status.OPEN);
+    } else {
+      order.setStatus(Status.CLOSED);
+    }
+    this.groupOrderRepo.persist(order);
+    return this.groupOrderMapper.toTO(order);
   }
 
 }

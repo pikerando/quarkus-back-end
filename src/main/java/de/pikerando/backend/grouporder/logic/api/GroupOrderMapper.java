@@ -19,12 +19,17 @@ public interface GroupOrderMapper {
    * @return GroupOrderTo
    */
   @Mapping(target = "id", source = "groupOrderId")
+  @Mapping(target = "status", source = "status")
+  @Mapping(target = "creator", source = "creator")
   GroupOrderTo toTO(GroupOrder groupOrder);
 
   /**
    * @param groupOrderTo
    * @return GroupOrder that compatible with the database
    */
+
+  @Mapping(target = "status", source = "status")
+  @Mapping(target = "creator", source = "creator")
   @Mapping(target = "groupOrderId", source = "id")
   GroupOrder toEntity(GroupOrderTo groupOrderTo);
 
@@ -33,4 +38,5 @@ public interface GroupOrderMapper {
    * @return a list of GroupOrderTo
    */
   List<GroupOrderTo> toToList(List<GroupOrder> list);
+
 }

@@ -6,7 +6,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import de.pikerando.backend.dish.service.api.DishToItemService;
 import de.pikerando.backend.general.sevice.model.ItemTo;
+import de.pikerando.backend.item.dataaccess.Item;
 import de.pikerando.backend.item.dataaccess.repo.api.ItemRepository;
 import de.pikerando.backend.item.logic.api.ItemManagement;
 import de.pikerando.backend.item.logic.api.ItemMapper;
@@ -24,6 +26,9 @@ public class ItemManagementImpl implements ItemManagement {
   @Inject
   private ItemMapper itemMapper;
 
+  @Inject
+  private DishToItemService dishService;
+
   @Transactional
   @Override
   public void createItem(ItemTo itemTo) {
@@ -38,7 +43,13 @@ public class ItemManagementImpl implements ItemManagement {
   @Override
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId) {
 
-    return this.itemMapper.toToList(this.itemRepo.findeByGroupOrderId(groupOrderId));
+    List<ItemTo> items = this.itemMapper.toToList(this.itemRepo.findeByGroupOrderId(groupOrderId));
+
+    return items.stream().map(e -> {
+      e.setDish(this.dishService.getDishByDishId(e.getDish().getId()));
+      return e;
+    }).toList();
+
   }
 
   @Override
@@ -48,4 +59,11 @@ public class ItemManagementImpl implements ItemManagement {
 
   }
 
+  @Override
+  public void updateItem(ItemTo itemTo) {
+
+    Item olditem = this.itemRepo.findByItemId(itemTo.getId());
+    Item newitem = this.itemMapper.toEntity(itemTo);
+    this.itemRepo.getEntityManager().merge(newitem);
+  }
 }

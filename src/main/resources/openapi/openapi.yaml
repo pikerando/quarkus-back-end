@@ -58,31 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
-    patch:
-      summary: Update a groupOrder
-      operationId: updateGroupOrder
-      tags:
-        - groupOrders
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GroupOrderTo'
-      responses:
-        200:
-          description:  GroupOrder updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GroupOrderTo'
-        404:
-          description: GroupOrder not found
-          content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/ErrorTo"
-    
+
   /groupOrders/{groupOrderId}:
     get:
       summary: Info for a specific groupOrder
@@ -112,7 +88,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorTo"
-
+    patch:
+      summary: Update the status of a groupOrder
+      operationId: updateStatusOfGroupOrder
+      tags:
+        - groupOrders
+      parameters:
+        - name: groupOrderId
+          in: path
+          required: true
+          description: The id of the groupOrder to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description:  GroupOrder updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupOrderTo'
+        404:
+          description: GroupOrder not found
+          content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ErrorTo"
+    delete:
+      summary: delet a groupOrder
+      operationId: deleteGroupOrder
+      tags:
+        - groupOrders
+      parameters:
+        - name: groupOrderId
+          in: path
+          required: true
+          description: The id of the groupOrder to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: groupOrder deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTo'
+    
   /items:
     post:
         summary: Create an item

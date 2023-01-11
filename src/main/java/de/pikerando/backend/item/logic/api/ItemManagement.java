@@ -10,9 +10,11 @@ import de.pikerando.backend.general.sevice.model.ItemTo;
  */
 
 public interface ItemManagement {
-  public void createItem(ItemTo itemTo);
+  void createItem(ItemTo itemTo);
 
-  public void deleteItem(Long itemId);
+  void deleteItem(Long itemId);
 
-  public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId);
+  List<ItemTo> listItemsOfGroupOrder(Long groupOrderId);
+
+  void updateItem(ItemTo itemTo);
 }

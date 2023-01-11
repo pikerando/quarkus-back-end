@@ -20,4 +20,10 @@ public class DishRepositoryImpl implements DishRepository {
     return find("restaurantId", restaurantId).list();
   }
 
+  @Override
+  public Dish findByDishId(Long dishId) {
+
+    return find("dishId", dishId).firstResult();
+  }
+
 }

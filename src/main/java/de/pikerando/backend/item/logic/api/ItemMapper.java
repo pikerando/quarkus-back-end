@@ -14,8 +14,9 @@ import de.pikerando.backend.item.dataaccess.Item;
  */
 @Mapper(componentModel = "cdi")
 public interface ItemMapper {
-  @Mapping(target = "id", source = "itemId")
-  @Mapping(target = "name", source = "name")
+  @Mapping(target = "id", source = "item.itemId")
+  @Mapping(target = "name", source = "item.name")
+  @Mapping(target = "dish.id", source = "item.dishId")
   ItemTo toTO(Item item);
 
   @Mapping(target = "itemId", source = "itemTo.id")

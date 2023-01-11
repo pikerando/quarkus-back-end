@@ -29,4 +29,10 @@ public class DishManagementImpl implements DishManagement {
     return this.dishMapper.toTolist(this.dishRepo.findAllByRestaurnatId(restaurantId));
   }
 
+  @Override
+  public DishTo findDishByDishId(Long dishId) {
+
+    return this.dishMapper.toTO(this.dishRepo.findByDishId(dishId));
+  }
+
 }

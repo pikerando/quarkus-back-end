@@ -13,4 +13,6 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 public interface DishRepository extends PanacheRepository<Dish> {
 
   List<Dish> findAllByRestaurnatId(Long restaurantId);
+
+  Dish findByDishId(Long dishId);
 }
