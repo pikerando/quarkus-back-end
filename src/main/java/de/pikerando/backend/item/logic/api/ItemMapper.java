@@ -22,6 +22,7 @@ public interface ItemMapper {
   @Mapping(target = "itemId", source = "itemTo.id")
   @Mapping(target = "name", source = "itemTo.name")
   @Mapping(target = "groupOrderId", source = "itemTo.groupOrderId")
+  @Mapping(target = "dishId", source = "itemTo.dish.id")
   Item toEntity(ItemTo itemTo);
 
   List<ItemTo> toToList(List<Item> list);

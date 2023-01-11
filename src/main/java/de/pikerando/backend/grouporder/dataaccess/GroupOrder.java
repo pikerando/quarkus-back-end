@@ -19,6 +19,24 @@ public class GroupOrder extends ApplicationPersistenceEntity {
 
   private Status status;
 
+  private Float totalPrice;
+
+  /**
+   * @return totalPrice
+   */
+  public Float getTotalPrice() {
+
+    return this.totalPrice;
+  }
+
+  /**
+   * @param totalPrice new value of {@link #gettotalPrice}.
+   */
+  public void setTotalPrice(Float totalPrice) {
+
+    this.totalPrice = totalPrice;
+  }
+
   /**
    * @return creator
    */

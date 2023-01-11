@@ -174,11 +174,7 @@ paths:
                 $ref: "#/components/schemas/ItemTo"
       responses:
         200:
-          description:  GroupOrder updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GroupOrderTo'
+          description:  items updated successfully
         404:
           description: GroupOrder not found
           content:

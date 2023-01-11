@@ -17,8 +17,6 @@ public interface ItemRepository extends PanacheRepository<Item> {
 
   List<Item> findeByGroupOrderId(Long grouporderid);
 
-  void deleteItem(Long itemId);
-
   /**
    * @param id
    * @return

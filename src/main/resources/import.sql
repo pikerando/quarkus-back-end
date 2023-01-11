@@ -1,6 +1,6 @@
-insert into grouporder (id,grouporderid, name, creator, status) values (123456,2, 'order1', 'patrick', 0);
-insert into grouporder (id,grouporderid, name, creator, status) values (123457,4, 'order3', 'youssef', 0);
-insert into grouporder (id,grouporderid, name, creator, status) values (123458,3 ,'order2', 'youssef', 1);
+insert into grouporder (id,grouporderid, name, creator, status, totalprice) values (123456,2, 'order1', 'patrick', 0, 8.30);
+insert into grouporder (id,grouporderid, name, creator, status, totalprice) values (123457,4, 'order3', 'youssef', 0,0);
+insert into grouporder (id,grouporderid, name, creator, status, totalprice) values (123458,3 ,'order2', 'youssef', 1, 13.20);
 
 
 

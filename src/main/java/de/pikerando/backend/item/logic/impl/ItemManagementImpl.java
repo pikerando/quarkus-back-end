@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import de.pikerando.backend.dish.service.api.DishToItemService;
 import de.pikerando.backend.general.sevice.model.ItemTo;
+import de.pikerando.backend.grouporder.service.api.UpdateGroupOrderSevice;
 import de.pikerando.backend.item.dataaccess.Item;
 import de.pikerando.backend.item.dataaccess.repo.api.ItemRepository;
 import de.pikerando.backend.item.logic.api.ItemManagement;
@@ -29,17 +29,17 @@ public class ItemManagementImpl implements ItemManagement {
   @Inject
   private DishToItemService dishService;
 
-  @Transactional
+  @Inject
+  UpdateGroupOrderSevice updateGroupOrder;
+
   @Override
   public void createItem(ItemTo itemTo) {
 
+    this.updateGroupOrder.updateTotalPrice(itemTo.getGroupOrderId(), itemTo.getDish().getPrice());
     this.itemRepo.persist(this.itemMapper.toEntity(itemTo));
 
   }
 
-  /**
-   * TODO: implement the query for search criteria
-   */
   @Override
   public List<ItemTo> listItemsOfGroupOrder(Long groupOrderId) {
 
@@ -55,15 +55,28 @@ public class ItemManagementImpl implements ItemManagement {
   @Override
   public void deleteItem(Long itemId) {
 
-    this.itemRepo.deleteItem(itemId);
+    Item item = this.itemRepo.find("itemId", itemId).firstResult();
+    Float price = -1 * this.dishService.getDishByDishId(item.getDishId()).getPrice();
+    this.updateGroupOrder.updateTotalPrice(item.getGroupOrderId(), price);
+    this.itemRepo.delete("itemId", itemId);
 
   }
 
   @Override
   public void updateItem(ItemTo itemTo) {
 
-    Item olditem = this.itemRepo.findByItemId(itemTo.getId());
-    Item newitem = this.itemMapper.toEntity(itemTo);
-    this.itemRepo.getEntityManager().merge(newitem);
+    Item item = this.itemRepo.findByItemId(itemTo.getId());
+    if (itemTo.getName() != null) {
+      item.setName(itemTo.getName());
+    }
+    if (itemTo.getGroupOrderId() != null) {
+      item.setGroupOrderId(itemTo.getGroupOrderId());
+    }
+    if (itemTo.getDish() != null) {
+      this.updateGroupOrder.updateTotalPrice(itemTo.getGroupOrderId(), itemTo.getDish().getPrice());
+      item.setDishId(itemTo.getDish().getId());
+    }
+
+    this.itemRepo.persist(item);
   }
 }

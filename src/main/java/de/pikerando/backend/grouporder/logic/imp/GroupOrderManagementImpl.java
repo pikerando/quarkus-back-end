@@ -60,4 +60,16 @@ public class GroupOrderManagementImpl implements GroupOrderManagement {
     return this.groupOrderMapper.toTO(order);
   }
 
+  @Override
+  public void updateTotalPrice(Long groupOrderId, Float price) {
+
+    GroupOrder order = this.groupOrderRepo.find("groupOrderId", groupOrderId).firstResult();
+    if (order.getTotalPrice() != null) {
+      order.setTotalPrice(price + order.getTotalPrice());
+    } else {
+      order.setTotalPrice(price);
+    }
+
+  }
+
 }

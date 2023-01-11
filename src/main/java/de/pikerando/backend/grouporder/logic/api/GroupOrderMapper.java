@@ -21,6 +21,7 @@ public interface GroupOrderMapper {
   @Mapping(target = "id", source = "groupOrderId")
   @Mapping(target = "status", source = "status")
   @Mapping(target = "creator", source = "creator")
+  @Mapping(target = "totalPrice", source = "totalPrice")
   GroupOrderTo toTO(GroupOrder groupOrder);
 
   /**
@@ -31,6 +32,7 @@ public interface GroupOrderMapper {
   @Mapping(target = "status", source = "status")
   @Mapping(target = "creator", source = "creator")
   @Mapping(target = "groupOrderId", source = "id")
+  @Mapping(target = "totalPrice", source = "totalPrice")
   GroupOrder toEntity(GroupOrderTo groupOrderTo);
 
   /**

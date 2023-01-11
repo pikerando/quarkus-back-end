@@ -21,12 +21,6 @@ public class ItemRepositoryImpl implements ItemRepository {
   }
 
   @Override
-  public void deleteItem(Long itemId) {
-
-    delete("itemId", itemId);
-  }
-
-  @Override
   public Item findByItemId(Long itemId) {
 
     return find("itemId", itemId).firstResult();

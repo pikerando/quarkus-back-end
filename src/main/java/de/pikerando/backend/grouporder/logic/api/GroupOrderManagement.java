@@ -17,4 +17,6 @@ public interface GroupOrderManagement {
   void deleteGroupOrder(Long groupOrderId);
 
   GroupOrderTo updateStatusOfGroupOrder(Long groupOrderId);
+
+  void updateTotalPrice(Long groupOrderId, Float price);
 }
