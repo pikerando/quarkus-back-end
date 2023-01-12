@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.1
+  version: 1.0.0
   title: Pikerando API
 paths:
   /groupOrders:
@@ -19,7 +19,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: A paged array of GroupOrders
+          description: A list array of GroupOrders
           headers:
             x-next:
               description: A link to the next page of responses
@@ -174,7 +174,7 @@ paths:
                 $ref: "#/components/schemas/ItemTo"
       responses:
         200:
-          description:  items updated successfully
+          description:  item updated successfully
         404:
           description: GroupOrder not found
           content:
@@ -304,13 +304,16 @@ components:
         id:
           type: integer
           format: int64
-        name:
+        dishName:
           type: string
         groupOrderId:
           type: integer
           format: int64
-        dish:
-          $ref: "#/components/schemas/DishTo"
+        price :
+          type : number 
+          format : float
+        extras : 
+          type: string
           
     RestaurantTo:
       type: object
