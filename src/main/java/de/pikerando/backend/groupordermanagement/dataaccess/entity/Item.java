@@ -1,5 +1,6 @@
 package de.pikerando.backend.groupordermanagement.dataaccess.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +21,7 @@ public class Item extends ApplicationPersistenceEntity {
 
   private String dishName;
 
+  @Column(name = "price", columnDefinition = "float default 0.00", precision = 5, scale = 2)
   private Float price;
 
   private String extras;

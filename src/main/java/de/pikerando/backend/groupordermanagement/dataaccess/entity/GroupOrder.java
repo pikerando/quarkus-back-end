@@ -3,8 +3,13 @@ package de.pikerando.backend.groupordermanagement.dataaccess.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 
@@ -33,8 +38,12 @@ public class GroupOrder extends ApplicationPersistenceEntity {
 
   private String creator;
 
+  @Enumerated(EnumType.ORDINAL)
+  @Column(nullable = false)
+  @ColumnDefault("0")
   private Status status;
 
+  @Column(name = "totalPrice", columnDefinition = "float default 0.00", precision = 5, scale = 2)
   private Float totalPrice;
 
   @OneToMany(mappedBy = "groupOrder", cascade = CascadeType.ALL)
