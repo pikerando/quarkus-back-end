@@ -1,6 +1,4 @@
-package de.pikerando.backend.groupordermanagement.logic.imp;
-
-import java.util.List;
+package de.pikerando.backend.restaurantmanagement.logic.impl;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -22,12 +20,6 @@ public class DishManagementImpl implements DishManagement {
 
   @Inject
   private DishMapper dishMapper;
-
-  @Override
-  public List<DishTo> ListDishesForRestaurant(Long restaurantId) {
-
-    return this.dishMapper.toTolist(this.dishRepo.findAllByRestaurnatId(restaurantId));
-  }
 
   @Override
   public DishTo findDishByDishId(Long dishId) {

@@ -18,5 +18,4 @@ public interface GroupOrderManagement {
 
   GroupOrderTo updateStatusOfGroupOrder(Long groupOrderId);
 
-  void updateTotalPrice(Long groupOrderId, Float price);
 }

@@ -17,6 +17,7 @@ public interface RestaurantMapper {
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "name", source = "name")
+  @Mapping(target = "menu", ignore = true)
   RestaurantTo toTO(Restaurant restaurant);
 
   @Mapping(target = "id", ignore = true)

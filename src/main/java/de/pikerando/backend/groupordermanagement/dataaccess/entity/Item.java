@@ -1,6 +1,8 @@
 package de.pikerando.backend.groupordermanagement.dataaccess.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 
@@ -12,7 +14,9 @@ import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 @Entity
 public class Item extends ApplicationPersistenceEntity {
 
-  private Long groupOrderId;
+  @ManyToOne
+  @JoinColumn(name = "groupOrderId")
+  private GroupOrder groupOrder;
 
   private String dishName;
 
@@ -21,19 +25,19 @@ public class Item extends ApplicationPersistenceEntity {
   private String extras;
 
   /**
-   * @return groupOrderId
+   * @return groupOrder
    */
-  public Long getGroupOrderId() {
+  public GroupOrder getGroupOrder() {
 
-    return this.groupOrderId;
+    return this.groupOrder;
   }
 
   /**
-   * @param groupOrderId new value of {@link #getgroupOrderId}.
+   * @param groupOrder new value of {@link #getgroupOrder}.
    */
-  public void setGroupOrderId(Long groupOrderId) {
+  public void setGroupOrder(GroupOrder groupOrder) {
 
-    this.groupOrderId = groupOrderId;
+    this.groupOrder = groupOrder;
   }
 
   /**

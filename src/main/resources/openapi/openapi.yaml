@@ -294,6 +294,7 @@ components:
         totalPrice: 
           type : number 
           format : float
+          default: 0
           
     ItemTo:
       type: object
@@ -312,6 +313,7 @@ components:
         price :
           type : number 
           format : float
+          default: 0
         extras : 
           type: string
           

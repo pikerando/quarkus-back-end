@@ -1,11 +1,31 @@
 package de.pikerando.backend.groupordermanagement.dataaccess.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import de.pikerando.backend.general.dataaccess.ApplicationPersistenceEntity;
 
 @Entity
 public class GroupOrder extends ApplicationPersistenceEntity {
+
+  /**
+   * @return items
+   */
+  public List<Item> getItems() {
+
+    return this.items;
+  }
+
+  /**
+   * @param items new value of {@link #getitems}.
+   */
+  public void setItems(List<Item> items) {
+
+    this.items = items;
+  }
 
   private String name;
 
@@ -16,6 +36,9 @@ public class GroupOrder extends ApplicationPersistenceEntity {
   private Status status;
 
   private Float totalPrice;
+
+  @OneToMany(mappedBy = "groupOrder", cascade = CascadeType.ALL)
+  private List<Item> items;
 
   /**
    * @return restaurantId

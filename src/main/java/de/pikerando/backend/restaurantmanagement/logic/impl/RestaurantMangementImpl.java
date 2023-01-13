@@ -6,7 +6,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import de.pikerando.backend.general.sevice.model.RestaurantTo;
+import de.pikerando.backend.restaurantmanagement.dataaccess.entity.Restaurant;
 import de.pikerando.backend.restaurantmanagement.dataaccess.repo.api.RestaurantRepository;
+import de.pikerando.backend.restaurantmanagement.logic.api.DishMapper;
 import de.pikerando.backend.restaurantmanagement.logic.api.RestaurantManagement;
 import de.pikerando.backend.restaurantmanagement.logic.api.RestaurantMapper;
 
@@ -23,6 +25,9 @@ public class RestaurantMangementImpl implements RestaurantManagement {
   @Inject
   private RestaurantMapper restaurantMapper;
 
+  @Inject
+  private DishMapper dishMapper;
+
   @Override
   public List<RestaurantTo> listRestaurants(Integer limit) {
 
@@ -34,7 +39,10 @@ public class RestaurantMangementImpl implements RestaurantManagement {
   public RestaurantTo getRestaurantById(Long restaurantId) {
 
     // TODO Auto-generated method stub
-    return this.restaurantMapper.toTO(this.restaurantRepo.findById(restaurantId));
+    Restaurant restaurant = this.restaurantRepo.findById(restaurantId);
+    RestaurantTo restaurantTo = this.restaurantMapper.toTO(restaurant);
+    restaurantTo.setMenu(this.dishMapper.toTolist(restaurant.getMenu()));
+    return restaurantTo;
   }
 
 }
