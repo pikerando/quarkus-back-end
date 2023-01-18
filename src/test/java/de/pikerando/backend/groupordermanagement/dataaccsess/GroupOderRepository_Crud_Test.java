@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.junit.jupiter.api.Test;
 
 import de.pikerando.backend.groupordermanagement.dataaccess.entity.GroupOrder;
+import de.pikerando.backend.groupordermanagement.dataaccess.entity.Status;
 import de.pikerando.backend.groupordermanagement.dataaccess.repo.impl.GroupOrderRepositoryImpl;
 
 import io.quarkus.test.TestTransaction;
@@ -57,6 +58,7 @@ public class GroupOderRepository_Crud_Test {
 
     GroupOrder order = new GroupOrder();
     order.setName("order10");
+    order.setStatus(Status.OPEN);
     creatOrder(order);
     assertNotNull(order.getId());
 

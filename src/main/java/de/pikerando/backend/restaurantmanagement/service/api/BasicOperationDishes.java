@@ -1,4 +1,4 @@
-package de.pikerando.backend.restaurantmanagement.logic.api;
+package de.pikerando.backend.restaurantmanagement.service.api;
 
 import de.pikerando.backend.general.sevice.model.DishTo;
 
@@ -6,13 +6,12 @@ import de.pikerando.backend.general.sevice.model.DishTo;
  * TODO ykharita This type ...
  *
  */
-public interface DishManagement {
-
-  DishTo findDishByDishId(Long dishId);
+public interface BasicOperationDishes {
 
   void creatDish(DishTo dishTo, Long RestaurantId);
 
   void deleteDish(Long dishId);
 
-  void updateDish(DishTo dishTo);
+  void updateDish(DishTo dishto);
+
 }

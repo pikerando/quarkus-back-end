@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 
 import de.pikerando.backend.general.sevice.model.DishTo;
 import de.pikerando.backend.restaurantmanagement.dataaccess.entity.Dish;
+import de.pikerando.backend.restaurantmanagement.dataaccess.entity.Restaurant;
 
 /**
  * TODO ykharita This type ...
@@ -29,8 +30,19 @@ public interface DishMapper {
    * @return Dish entity
    */
   @Mapping(target = "id", ignore = true)
-  @Mapping(target = "name", source = "name")
+  @Mapping(target = "name", source = "dishTo.name")
   Dish toEntity(DishTo dishTo);
+
+  /**
+   * @param dishTo
+   * @param restaurant
+   * @return dish entity
+   */
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "name", source = "dishTo.name")
+  @Mapping(target = "price", source = "dishTo.price")
+  @Mapping(target = "restaurant", source = "restaurant")
+  Dish toEntity(DishTo dishTo, Restaurant restaurant);
 
   /**
    * @param list of Dish

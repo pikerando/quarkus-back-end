@@ -1,4 +1,4 @@
-package de.pikerando.backend.restaurantmanagement.service;
+package de.pikerando.backend.restaurantmanagement.service.impl;
 
 import java.util.List;
 

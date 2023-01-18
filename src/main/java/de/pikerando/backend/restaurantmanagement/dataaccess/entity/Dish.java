@@ -38,6 +38,30 @@ public class Dish extends ApplicationPersistenceEntity {
   }
 
   /**
+   * @return restaurant
+   */
+  public Restaurant getRestaurant() {
+
+    return this.restaurant;
+  }
+
+  /**
+   * @param restaurant new value of {@link #getrestaurant}.
+   */
+  public void setRestaurant(Restaurant restaurant) {
+
+    this.restaurant = restaurant;
+  }
+
+  /**
+   * @param price new value of {@link #getprice}.
+   */
+  public void setPrice(Float price) {
+
+    this.price = price;
+  }
+
+  /**
    * @return name
    */
   public String getName() {

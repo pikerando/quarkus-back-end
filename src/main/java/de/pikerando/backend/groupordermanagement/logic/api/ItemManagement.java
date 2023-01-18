@@ -2,6 +2,8 @@ package de.pikerando.backend.groupordermanagement.logic.api;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import de.pikerando.backend.general.sevice.model.ItemTo;
 
 /**
@@ -9,6 +11,7 @@ import de.pikerando.backend.general.sevice.model.ItemTo;
  *
  */
 
+@ApplicationScoped
 public interface ItemManagement {
   void createItem(ItemTo itemTo);
 

@@ -22,6 +22,7 @@ public interface RestaurantMapper {
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "name", source = "name")
+  @Mapping(target = "menu", ignore = true)
   Restaurant toEntity(RestaurantTo restaurantTo);
 
   List<RestaurantTo> toTolist(List<Restaurant> list);

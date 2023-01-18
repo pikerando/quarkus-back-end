@@ -39,8 +39,8 @@ public class GroupOrder extends ApplicationPersistenceEntity {
   private String creator;
 
   @Enumerated(EnumType.ORDINAL)
-  @Column(nullable = false)
   @ColumnDefault("0")
+  @Column(nullable = false)
   private Status status;
 
   @Column(name = "totalPrice", columnDefinition = "float default 0.00", precision = 5, scale = 2)

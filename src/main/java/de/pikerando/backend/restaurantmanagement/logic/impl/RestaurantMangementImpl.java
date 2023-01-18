@@ -45,4 +45,27 @@ public class RestaurantMangementImpl implements RestaurantManagement {
     return restaurantTo;
   }
 
+  @Override
+  public void createRestaurant(RestaurantTo restaurantTo) {
+
+    this.restaurantRepo.persist(this.restaurantMapper.toEntity(restaurantTo));
+  }
+
+  @Override
+  public void deleteRestaurant(Long restaurantId) {
+
+    this.restaurantRepo.delete("id", restaurantId);
+
+  }
+
+  @Override
+  public void updateRestaurant(RestaurantTo restaurantTo) {
+
+    Restaurant restaurant = this.restaurantRepo.findById(restaurantTo.getId());
+    restaurant.setName(restaurantTo.getName());
+
+    this.restaurantRepo.persist(restaurant);
+
+  }
+
 }

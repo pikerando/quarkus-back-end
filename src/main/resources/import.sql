@@ -6,8 +6,8 @@ insert into grouporder (id, name, creator, status, totalprice) values (13,'order
 
 
 
-insert into item (id,grouporderid, dishname, extras, price) values (11,11,'Margherita Pizza','without onion', 5.5);
-insert into item (id,grouporderid, dishname, extras, price) values (12,11,'Margherita Pizza','with mias', 6.4);
+insert into item (id,grouporderid, dishname, extras, price) values (11,12,'Margherita Pizza','without onion', 5.5);
+insert into item (id,grouporderid, dishname, extras, price) values (12,12,'Margherita Pizza','with mias', 6.4);
 insert into item (id,grouporderid, dishname, extras, price) values (13,13,'Margherita Pizza','with k', 7.3);
 
 

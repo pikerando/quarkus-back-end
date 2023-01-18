@@ -23,4 +23,12 @@ public abstract class ApplicationPersistenceEntity {
     return this.id;
   }
 
+  /**
+   * @param id new value of {@link #getid}.
+   */
+  public void setId(Long id) {
+
+    this.id = id;
+  }
+
 }

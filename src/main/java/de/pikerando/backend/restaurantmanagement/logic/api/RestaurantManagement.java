@@ -12,4 +12,10 @@ public interface RestaurantManagement {
   List<RestaurantTo> listRestaurants(Integer limit);
 
   RestaurantTo getRestaurantById(Long restaurantId);
+
+  void createRestaurant(RestaurantTo restaurantTo);
+
+  void deleteRestaurant(Long restaurantId);
+
+  void updateRestaurant(RestaurantTo restaurantTo);
 }
