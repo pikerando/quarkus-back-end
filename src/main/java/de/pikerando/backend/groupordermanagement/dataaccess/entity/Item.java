@@ -24,6 +24,24 @@ public class Item extends ApplicationPersistenceEntity {
   @Column(name = "price", columnDefinition = "float default 0.00", precision = 5, scale = 2)
   private Float price;
 
+  private String creator;
+
+  /**
+   * @return creator
+   */
+  public String getCreator() {
+
+    return this.creator;
+  }
+
+  /**
+   * @param creator new value of {@link #getcreator}.
+   */
+  public void setCreator(String creator) {
+
+    this.creator = creator;
+  }
+
   private String extras;
 
   /**

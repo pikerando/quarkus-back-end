@@ -11,6 +11,7 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public abstract class ApplicationPersistenceEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
@@ -21,14 +22,6 @@ public abstract class ApplicationPersistenceEntity {
   public Long getId() {
 
     return this.id;
-  }
-
-  /**
-   * @param id new value of {@link #getid}.
-   */
-  public void setId(Long id) {
-
-    this.id = id;
   }
 
 }

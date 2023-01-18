@@ -42,17 +42,19 @@ public class itemServiceImpl implements ItemsApi {
 
   }
 
-  @Override
   @Transactional
-  public void updateItem(ItemTo itemTo) throws PersistenceException, NullPointerException {
+  @Override
+  public void updateItem(Long itemId, ItemTo itemTo) {
 
     try {
-      this.itemManagement.updateItem(itemTo);
+      this.itemManagement.updateItem(itemId, itemTo);
     } catch (PersistenceException e) {
       throw new PersistenceException("persistenceException => " + e.getMessage());
     } catch (NullPointerException e) {
       throw new NullPointerException("nullpointerexception: cant find the item in the database => " + e.getMessage());
     }
+
+    // TODO Auto-generated method stub
 
   }
 

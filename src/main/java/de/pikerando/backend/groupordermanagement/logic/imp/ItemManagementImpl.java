@@ -67,18 +67,18 @@ public class ItemManagementImpl implements ItemManagement {
   }
 
   @Override
-  public void updateItem(ItemTo itemTo) {
+  public void updateItem(Long itemId, ItemTo itemTo) {
 
-    Item item = this.itemRepo.find("id", itemTo.getId()).firstResult();
+    Item item = this.itemRepo.find("id", itemId).firstResult();
     item.setDishName(itemTo.getDishName());
     item.setExtras(itemTo.getExtras());
     try {
+      item.setPrice(itemTo.getPrice());
       item.getGroupOrder().setTotalPrice(item.getGroupOrder().getTotalPrice() + itemTo.getPrice() - item.getPrice());
     } catch (NullPointerException e) {
-      throw new NullPointerException("there is no price either by TO" + itemTo.getPrice() + "or by " + item.getPrice());
+      throw new NullPointerException("there is no price by TO" + itemTo.getPrice() + "or by " + item.getPrice());
     }
 
-    item.setPrice(itemTo.getPrice());
     this.itemRepo.persist(item);
   }
 }

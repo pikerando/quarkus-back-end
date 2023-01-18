@@ -160,8 +160,17 @@ paths:
               application/json:
                 schema:
                   $ref: "#/components/schemas/ErrorTo"
+  /items/{itemId}:
     patch:
       summary: Update an item
+      parameters:
+        - name: itemId
+          in: path
+          description: The id of the item to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
       operationId: updateItem
       tags:
         - items
@@ -181,7 +190,6 @@ paths:
               application/json:
                 schema:
                   $ref: "#/components/schemas/ErrorTo"
-  /items/{itemId}:
     delete:
       summary: Deletes a single item based on the ID supplied
       operationId: deleteItem
@@ -306,6 +314,8 @@ components:
           type: integer
           format: int64
         dishName:
+          type: string
+        creator:
           type: string
         groupOrderId:
           type: integer

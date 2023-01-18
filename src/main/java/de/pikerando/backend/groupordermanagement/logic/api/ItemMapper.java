@@ -19,14 +19,16 @@ public interface ItemMapper {
   @Mapping(target = "extras", source = "extras")
   @Mapping(target = "price", source = "price")
   @Mapping(target = "dishName", source = "dishName")
+  @Mapping(target = "creator", source = "creator")
   @Mapping(target = "groupOrderId", source = "groupOrder.id")
   ItemTo toTO(Item item);
 
+  @Mapping(target = "id", ignore = true)
   @Mapping(target = "dishName", source = "itemTo.dishName")
   @Mapping(target = "extras", source = "itemTo.extras")
   @Mapping(target = "price", source = "itemTo.price")
   @Mapping(target = "groupOrder", source = "groupOrder")
-  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "creator", source = "itemTo.creator")
   Item toEntity(ItemTo itemTo, GroupOrder groupOrder);
 
   List<ItemTo> toToList(List<Item> list);

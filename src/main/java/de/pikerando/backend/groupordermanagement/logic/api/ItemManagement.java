@@ -19,5 +19,5 @@ public interface ItemManagement {
 
   void deleteItem(Long itemId);
 
-  void updateItem(ItemTo itemTo);
+  void updateItem(Long itemId, ItemTo itemTo);
 }
