@@ -13,7 +13,7 @@ import de.pikerando.backend.general.sevice.model.ItemTo;
 
 @ApplicationScoped
 public interface ItemManagement {
-  void createItem(ItemTo itemTo);
+  ItemTo createItem(ItemTo itemTo);
 
   List<ItemTo> listItemsOfGroupOrder(Long groupOrderId);
 

@@ -19,10 +19,10 @@ public class itemServiceImpl implements ItemsApi {
 
   @Override
   @Transactional
-  public void createItem(ItemTo itemTo) throws PersistenceException {
+  public ItemTo createItem(ItemTo itemTo) throws PersistenceException {
 
     try {
-      this.itemManagement.createItem(itemTo);
+      return this.itemManagement.createItem(itemTo);
 
     } catch (PersistenceException e) {
       throw new PersistenceException("Duplicate value detected: " + itemTo.getId());

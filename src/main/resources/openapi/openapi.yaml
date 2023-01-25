@@ -51,7 +51,11 @@ paths:
 
       responses:
         '201':
-          description: Null response
+          description: the groupOrder is created successfully 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupOrderTo"
         default:
           description: unexpected error
           content:
@@ -153,7 +157,11 @@ paths:
 
         responses:
           '201':
-            description: Null response
+            description: the item is created successfully 
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ItemTo"
           default:
             description: unexpected error
             content:

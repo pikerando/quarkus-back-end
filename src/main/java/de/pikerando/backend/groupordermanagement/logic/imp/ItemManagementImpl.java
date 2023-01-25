@@ -30,7 +30,7 @@ public class ItemManagementImpl implements ItemManagement {
   private GroupOrderRepository groupOrderRepo;
 
   @Override
-  public void createItem(ItemTo itemTo) throws NullPointerException {
+  public ItemTo createItem(ItemTo itemTo) throws NullPointerException {
 
     GroupOrder order = this.groupOrderRepo.findById(itemTo.getGroupOrderId());
 
@@ -40,7 +40,9 @@ public class ItemManagementImpl implements ItemManagement {
       throw new NullPointerException("price not given: " + itemTo.getPrice());
     }
 
-    this.itemRepo.persist(this.itemMapper.toEntity(itemTo, order));
+    Item item = this.itemMapper.toEntity(itemTo, order);
+    this.itemRepo.persist(item);
+    return this.itemMapper.toTO(item);
 
   }
 

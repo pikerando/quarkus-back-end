@@ -31,9 +31,11 @@ public class GroupOrderManagementImpl implements GroupOrderManagement {
   }
 
   @Override
-  public void createGroupOrder(GroupOrderTo groupOrderTo) {
+  public GroupOrderTo createGroupOrder(GroupOrderTo groupOrderTo) {
 
-    this.groupOrderRepo.persist(this.groupOrderMapper.toEntity(groupOrderTo));
+    GroupOrder order = this.groupOrderMapper.toEntity(groupOrderTo);
+    this.groupOrderRepo.persist(order);
+    return this.groupOrderMapper.toTO(order);
 
   }
 

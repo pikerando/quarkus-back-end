@@ -23,10 +23,10 @@ public class GroupOrderServiceImpl implements GroupOrdersApi {
 
   @Override
   @Transactional
-  public void createGroupOrder(GroupOrderTo groupOrderTo) throws PersistenceException {
+  public GroupOrderTo createGroupOrder(GroupOrderTo groupOrderTo) throws PersistenceException {
 
     try {
-      this.groupOrder.createGroupOrder(groupOrderTo);
+      return this.groupOrder.createGroupOrder(groupOrderTo);
     } catch (PersistenceException e) {
       throw new PersistenceException(e.getMessage());
     }
