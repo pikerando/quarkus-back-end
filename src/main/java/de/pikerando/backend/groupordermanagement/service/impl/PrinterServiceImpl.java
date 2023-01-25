@@ -4,8 +4,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import de.pikerando.backend.groupordermanagement.logic.api.Printermanagment;
-import de.pikerando.backend.groupordermanagement.service.Order;
 import de.pikerando.backend.groupordermanagement.service.api.PrinterService;
+import de.pikerando.backend.restaurantmanagement.logic.Order;
 
 /**
  * TODO ykharita This type ...

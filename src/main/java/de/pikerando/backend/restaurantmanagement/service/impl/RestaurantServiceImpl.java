@@ -1,11 +1,10 @@
 package de.pikerando.backend.restaurantmanagement.service.impl;
 
-import java.util.List;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
-import de.pikerando.backend.general.sevice.api.RestaurantsApi;
+import de.pikerando.backend.general.sevice.api.RestaurantRegisterApi;
 import de.pikerando.backend.general.sevice.model.RestaurantTo;
 import de.pikerando.backend.restaurantmanagement.logic.api.RestaurantManagement;
 
@@ -14,21 +13,38 @@ import de.pikerando.backend.restaurantmanagement.logic.api.RestaurantManagement;
  *
  */
 @ApplicationScoped
-public class RestaurantServiceImpl implements RestaurantsApi {
+public class RestaurantServiceImpl implements RestaurantRegisterApi {
 
   @Inject
   private RestaurantManagement restaurantmanagement;
 
   @Override
-  public List<RestaurantTo> listRestaurants(Integer limit) {
+  @Transactional
+  public RestaurantTo createRestaurant(RestaurantTo restaurantTo) {
 
-    return this.restaurantmanagement.listRestaurants(limit);
+    return this.restaurantmanagement.createRestaurant(restaurantTo);
+
+  }
+
+  public void deleteRestaurant(Long RestaurantId) {
+
+    this.restaurantmanagement.deleteRestaurant(RestaurantId);
+
   }
 
   @Override
+  @Transactional
   public RestaurantTo showRestaurantById(Long restaurantId) {
 
     return this.restaurantmanagement.getRestaurantById(restaurantId);
+  }
+
+  @Override
+
+  @Transactional
+  public RestaurantTo updateRestaurant(Long restaurantId, RestaurantTo restaurantTo) {
+
+    return this.restaurantmanagement.updateRestaurant(restaurantId, restaurantTo);
   }
 
 }

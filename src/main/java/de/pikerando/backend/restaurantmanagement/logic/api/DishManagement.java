@@ -10,9 +10,9 @@ public interface DishManagement {
 
   DishTo findDishByDishId(Long dishId);
 
-  void creatDish(DishTo dishTo, Long RestaurantId);
+  void creatDish(Long restaurantId, DishTo dishTo);
 
   void deleteDish(Long dishId);
 
-  void updateDish(DishTo dishTo);
+  DishTo updateDish(Long dishId, DishTo dishTo);
 }

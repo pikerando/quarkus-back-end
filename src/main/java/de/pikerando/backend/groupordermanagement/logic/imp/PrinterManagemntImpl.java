@@ -14,8 +14,8 @@ import de.pikerando.backend.groupordermanagement.dataaccess.entity.GroupOrder;
 import de.pikerando.backend.groupordermanagement.dataaccess.entity.Item;
 import de.pikerando.backend.groupordermanagement.dataaccess.repo.api.GroupOrderRepository;
 import de.pikerando.backend.groupordermanagement.logic.api.Printermanagment;
-import de.pikerando.backend.groupordermanagement.service.Order;
-import de.pikerando.backend.restaurantmanagement.service.impl.RestaurantServiceImpl;
+import de.pikerando.backend.restaurantmanagement.logic.Order;
+import de.pikerando.backend.restaurantmanagement.service.impl.OrderServiceImpl;
 
 /**
  * TODO ykharita This type ...
@@ -28,7 +28,7 @@ public class PrinterManagemntImpl implements Printermanagment {
   GroupOrderRepository groupOrederRepo;
 
   @Inject
-  RestaurantServiceImpl restaurantSevrvice;
+  OrderServiceImpl restaurantSevrvice;
 
   @Override
   public Order order(Long GroupOrderId) {
@@ -68,7 +68,7 @@ public class PrinterManagemntImpl implements Printermanagment {
         }
 
       }
-      String o = amount + "X <" + dishName + "> ordered by <" + orderers.substring(0, orderers.length() - 2)
+      String o = amount + "x <" + dishName + "> ordered by <" + orderers.substring(0, orderers.length() - 2)
           + " > extras wish <" + extra.substring(0, extra.length() - 2) + " > price per one:" + price;
       order.getOrder().add(o);
     }

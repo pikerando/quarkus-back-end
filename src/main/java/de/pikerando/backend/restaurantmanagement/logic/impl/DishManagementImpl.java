@@ -34,9 +34,9 @@ public class DishManagementImpl implements DishManagement {
   }
 
   @Override
-  public void creatDish(DishTo dishTo, Long RestaurantId) {
+  public void creatDish(Long restaurantId, DishTo dishTo) {
 
-    Restaurant restaurant = this.restaurantRepo.findById(RestaurantId);
+    Restaurant restaurant = this.restaurantRepo.findById(restaurantId);
     this.dishRepo.persist(this.dishMapper.toEntity(dishTo, restaurant));
 
   }
@@ -49,14 +49,15 @@ public class DishManagementImpl implements DishManagement {
   }
 
   @Override
-  public void updateDish(DishTo dishTo) {
+  public DishTo updateDish(Long dishId, DishTo dishTo) {
 
-    Dish dish = this.dishRepo.findById(dishTo.getId());
+    Dish dish = this.dishRepo.findById(dishId);
 
     dish.setName(dishTo.getName());
     dish.setPrice(dishTo.getPrice());
 
     this.dishRepo.persist(dish);
+    return this.dishMapper.toTO(dish);
   }
 
 }

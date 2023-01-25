@@ -27,12 +27,4 @@ public interface RestaurantMapper {
 
   List<RestaurantTo> toTolist(List<Restaurant> list);
 
-  // @AfterMapping
-  // default void mapMenu(Restaurant restaurant, @MappingTarget RestaurantTo restaurantTo) {
-  //
-  // List<Dish> dishes = restaurant.getMenu();
-  // List<DishTo> dishesTo = dishes.stream().map(dishMapper::toTO).collect(Collectors.toList());
-  // restaurantTo.setMenu(dishesTo);
-  // }
-
 }

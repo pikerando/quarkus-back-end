@@ -13,9 +13,9 @@ public interface RestaurantManagement {
 
   RestaurantTo getRestaurantById(Long restaurantId);
 
-  void createRestaurant(RestaurantTo restaurantTo);
+  RestaurantTo createRestaurant(RestaurantTo restaurantTo);
 
   void deleteRestaurant(Long restaurantId);
 
-  void updateRestaurant(RestaurantTo restaurantTo);
+  RestaurantTo updateRestaurant(Long restaurantId, RestaurantTo restaurantTo);
 }

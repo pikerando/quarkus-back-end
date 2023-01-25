@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import de.pikerando.backend.general.sevice.model.RestaurantTo;
 import de.pikerando.backend.restaurantmanagement.dataaccess.entity.Restaurant;
@@ -31,14 +32,12 @@ public class RestaurantMangementImpl implements RestaurantManagement {
   @Override
   public List<RestaurantTo> listRestaurants(Integer limit) {
 
-    // TODO implement the limitaion
     return this.restaurantMapper.toTolist(this.restaurantRepo.findAll().list());
   }
 
   @Override
   public RestaurantTo getRestaurantById(Long restaurantId) {
 
-    // TODO Auto-generated method stub
     Restaurant restaurant = this.restaurantRepo.findById(restaurantId);
     RestaurantTo restaurantTo = this.restaurantMapper.toTO(restaurant);
     restaurantTo.setMenu(this.dishMapper.toTolist(restaurant.getMenu()));
@@ -46,9 +45,13 @@ public class RestaurantMangementImpl implements RestaurantManagement {
   }
 
   @Override
-  public void createRestaurant(RestaurantTo restaurantTo) {
+  @Transactional
+  public RestaurantTo createRestaurant(RestaurantTo restaurantTo) {
 
-    this.restaurantRepo.persist(this.restaurantMapper.toEntity(restaurantTo));
+    Restaurant r = this.restaurantMapper.toEntity(restaurantTo);
+
+    this.restaurantRepo.persist(r);
+    return this.restaurantMapper.toTO(r);
   }
 
   @Override
@@ -59,13 +62,13 @@ public class RestaurantMangementImpl implements RestaurantManagement {
   }
 
   @Override
-  public void updateRestaurant(RestaurantTo restaurantTo) {
+  public RestaurantTo updateRestaurant(Long restaurantId, RestaurantTo restaurantTo) {
 
-    Restaurant restaurant = this.restaurantRepo.findById(restaurantTo.getId());
+    Restaurant restaurant = this.restaurantRepo.findById(restaurantId);
     restaurant.setName(restaurantTo.getName());
 
     this.restaurantRepo.persist(restaurant);
-
+    return this.restaurantMapper.toTO(restaurant);
   }
 
 }

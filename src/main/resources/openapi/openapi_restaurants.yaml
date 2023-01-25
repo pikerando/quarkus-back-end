@@ -1,0 +1,224 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.1
+  title: Pikerando API
+paths:
+  /restaurant:
+    post:
+      summary: Create an restaurant
+      operationId: createRestaurant
+      tags:
+        - restaurantRegister
+      requestBody:
+        description: the restaurant properties
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RestaurantTo"
+
+      responses:
+        '200':
+          description: the restuarant is created succssuflly 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestaurantTo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorTo"
+                
+  /restaurant/{restaurantId}:
+    get:
+      summary: Info for a specific restaurant
+      operationId: showRestaurantById
+      tags:
+        - restaurantRegister
+      parameters:
+        - name: restaurantId
+          in: path
+          required: true
+          description: The id of the restaurant to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestaurantTo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorTo"
+    patch:
+      summary: Update the restaurant
+      operationId: updateRestaurant
+      tags:
+        - restaurantRegister
+      parameters:
+        - name: restaurantId
+          in: path
+          required: true
+          description: The id of the restaurant to update
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: the restaurant properties
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RestaurantTo"
+
+      responses:
+        200:
+          description:  GroupOrder updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestaurantTo'
+        404:
+          description: GroupOrder not found
+          content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ErrorTo"
+  /dish/{restaurantId}:      
+    post:
+      summary: add dish to restaurant
+      operationId: CreateDish
+      tags:
+        - dishRegister
+      parameters:
+        - name: restaurantId
+          in: path
+          required: true
+          description: The id of the restaurant to retrieve
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: the dish properties
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DishTo"
+
+      responses:
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorTo"
+  /dish/{dishId}:
+    patch:
+      summary: Update the dish
+      operationId: updateDish
+      tags:
+        - dishRegister
+      parameters:
+        - name: dishId
+          in: path
+          required: true
+          description: The id of the groupOrder to retrieve
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: the dish properties
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DishTo"
+
+      responses:
+        200:
+          description:  GroupOrder updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DishTo'
+        404:
+          description: GroupOrder not found
+          content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ErrorTo"
+    delete:
+      summary: delet a restaurant
+      operationId: deleteRestaurant
+      tags:
+        - dishRegister
+      parameters:
+        - name: dishId
+          in: path
+          required: true
+          description: The id of the groupOrder to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: groupOrder deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTo'
+components:
+  schemas:
+       
+ 
+    RestaurantTo:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        menu:
+          type: array
+          items:
+            $ref: "#/components/schemas/DishTo"
+
+    DishTo:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price: 
+          type : number
+          format : float
+
+    ErrorTo:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

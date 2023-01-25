@@ -1,4 +1,4 @@
-package de.pikerando.backend.groupordermanagement.service;
+package de.pikerando.backend.restaurantmanagement.logic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,6 @@ import java.util.List;
  */
 public class Order {
   private String restaurantName;
-
-  private Long amount;
 
   private String orderer;
 
@@ -32,22 +30,6 @@ public class Order {
   public void setRestaurantName(String restaurantName) {
 
     this.restaurantName = restaurantName;
-  }
-
-  /**
-   * @return amount
-   */
-  public Long getAmount() {
-
-    return this.amount;
-  }
-
-  /**
-   * @param amount new value of {@link #getamount}.
-   */
-  public void setAmount(Long amount) {
-
-    this.amount = amount;
   }
 
   /**
