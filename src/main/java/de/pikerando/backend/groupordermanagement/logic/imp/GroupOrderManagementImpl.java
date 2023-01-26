@@ -42,7 +42,7 @@ public class GroupOrderManagementImpl implements GroupOrderManagement {
   @Override
   public void deleteGroupOrder(Long groupOrderId) {
 
-    this.groupOrderRepo.delete("groupOrderId", groupOrderId);
+    this.groupOrderRepo.delete("Id", groupOrderId);
 
   }
 
