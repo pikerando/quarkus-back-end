@@ -1,6 +1,7 @@
 package de.pikerando.backend.general.dataaccess;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -10,8 +11,9 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public abstract class ApplicationPersistenceEntity {
+
   @Id
-  @GeneratedValue()
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
   /**
@@ -21,4 +23,5 @@ public abstract class ApplicationPersistenceEntity {
 
     return this.id;
   }
+
 }

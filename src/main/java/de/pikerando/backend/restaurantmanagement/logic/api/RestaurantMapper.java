@@ -1,0 +1,30 @@
+package de.pikerando.backend.restaurantmanagement.logic.api;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+import de.pikerando.backend.general.sevice.model.RestaurantTo;
+import de.pikerando.backend.restaurantmanagement.dataaccess.entity.Restaurant;
+
+/**
+ * TODO ykharita This type ...
+ *
+ */
+@Mapper(componentModel = "cdi")
+public interface RestaurantMapper {
+
+  @Mapping(target = "id", source = "id")
+  @Mapping(target = "name", source = "name")
+  @Mapping(target = "menu", ignore = true)
+  RestaurantTo toTO(Restaurant restaurant);
+
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "name", source = "name")
+  @Mapping(target = "menu", ignore = true)
+  Restaurant toEntity(RestaurantTo restaurantTo);
+
+  List<RestaurantTo> toTolist(List<Restaurant> list);
+
+}
